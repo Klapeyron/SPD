@@ -21,7 +21,7 @@ int CalierBlocks::calculateB(std::vector<Task> const& tasks)
   unsigned int cmax = schrage(tasks);
   auto iter = std::max_element(tasks.begin(), tasks.end(), [cmax](Task const& task, Task const&)
                                {
-                                 return cmax == task.insertTimeIntoMachine + task.q;
+                                 return cmax == task.insertTimeIntoMachine + task.p + task.q;
                                });
   return std::distance(tasks.begin(), iter);
 }
