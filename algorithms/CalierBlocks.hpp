@@ -6,7 +6,7 @@
 
 namespace CalierBlocks
 {
-int calculateA(std::vector<Task> const& tasks, unsigned int b);
-int calculateB(std::vector<Task> const& tasks);
-int calculateC(std::vector<Task> const& tasks, unsigned int a, unsigned int b);
+int calculateA(std::vector<Task> & tasks, unsigned int b);
+int calculateB(std::vector<Task> & tasks);
+int calculateC(std::vector<Task> & tasks, unsigned int a, unsigned int b);
 }

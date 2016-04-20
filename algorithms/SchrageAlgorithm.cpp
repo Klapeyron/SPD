@@ -1,6 +1,6 @@
 #include "SchrageAlgorithm.hpp"
 
-int schrage(std::vector<Task> const& tasks)
+int schrage(std::vector<Task> & tasks)
 {
   auto loadedTasksLambda = [](Task const& left, Task const& right) { return left.r > right.r; };
   auto readyTasksLambda = [](Task const& left, Task const& right) { return left.q < right.q; };
@@ -8,6 +8,7 @@ int schrage(std::vector<Task> const& tasks)
   std::priority_queue<Task, std::vector<Task>, decltype(loadedTasksLambda)> loadedTasks{loadedTasksLambda};
   std::priority_queue<Task, std::vector<Task>, decltype(readyTasksLambda)> readyTasks{readyTasksLambda};
 
+  std::vector<Task> tasksOnMaschineInOrder;
   unsigned int time = 0, cmax = 0;
 
   for(auto const& task : tasks)
@@ -26,8 +27,10 @@ int schrage(std::vector<Task> const& tasks)
     {
       time += readyTasks.top().p;
       cmax = std::max(cmax, readyTasks.top().q + time);
+      tasksOnMaschineInOrder.push_back(readyTasks.top());
       readyTasks.pop();
     }
   }
+  tasks = tasksOnMaschineInOrder;
   return cmax;
 }

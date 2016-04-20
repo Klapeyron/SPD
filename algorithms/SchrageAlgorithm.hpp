@@ -7,4 +7,4 @@
 
 #include "Task.hpp"
 
-int schrage(std::vector<Task> const& tasks);
+int schrage(std::vector<Task> & tasks);

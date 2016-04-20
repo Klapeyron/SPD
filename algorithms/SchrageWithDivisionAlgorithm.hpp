@@ -7,4 +7,4 @@
 
 #include "Task.hpp"
 
-int schrageWithDivision(std::vector<Task> const& tasks);
+int schrageWithDivision(std::vector<Task> & tasks);
