@@ -1,4 +1,4 @@
-#include "calierBlocks.hpp"
+#include "CalierBlocks.hpp"
 
 int CalierBlocks::calculateA(std::vector<Task> const& tasks, unsigned int b)
 {
@@ -25,10 +25,10 @@ int CalierBlocks::calculateB(std::vector<Task> const& tasks)
   unsigned int cmax = schrage(tasks);
   auto iter = std::max_element(tasks.begin(), tasks.end(), [&tasks,cmax](Task const& left, Task const& right)
                                {
-                                 auto leftTaskPosition = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), left));
-                                 auto rightTaskPosition = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), right));
+                                 auto leftTaskDistance = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), left));
+                                 auto rightTaskDistance = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), right));
 
-                                 return cmax == left.insertTimeIntoMachine + left.p + left.q and leftTaskPosition < rightTaskPosition;
+                                 return cmax == left.insertTimeIntoMachine + left.p + left.q and leftTaskDistance < rightTaskDistance;
                                });
   return std::distance(tasks.begin(), iter);
 }
@@ -37,10 +37,10 @@ int CalierBlocks::calculateC(std::vector<Task> const& tasks, unsigned int a, uns
 {
   auto iter = std::max_element(tasks.begin() + a, tasks.begin() + b, [&tasks,a,b](Task const& left, Task const& right)
                                {
-                                 auto leftTaskPosition = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, left));
-                                 auto rightTaskPosition = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, right));
+                                 auto leftTaskDistance = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, left));
+                                 auto rightTaskDistance = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, right));
 
-                                 return left.q < tasks[b].q and leftTaskPosition < rightTaskPosition;
+                                 return left.q < tasks[b].q and leftTaskDistance < rightTaskDistance;
                                });
   return std::distance(tasks.begin(), iter);
 }
