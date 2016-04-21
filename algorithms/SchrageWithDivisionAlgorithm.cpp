@@ -1,6 +1,6 @@
 #include "SchrageWithDivisionAlgorithm.hpp"
 
-int schrageWithDivision(std::vector<Task> & tasks)
+int schrageWithDivision(std::vector<Task> const& tasks)
 {
   auto loadedTasksLambda = [](Task const& left, Task const& right) { return left.r > right.r; };
   auto readyTasksLambda = [](Task const& left, Task const& right) { return left.q < right.q; };
@@ -8,7 +8,6 @@ int schrageWithDivision(std::vector<Task> & tasks)
   std::priority_queue<Task, std::vector<Task>, decltype(loadedTasksLambda)> loadedTasks{loadedTasksLambda};
   std::priority_queue<Task, std::vector<Task>, decltype(readyTasksLambda)> readyTasks{readyTasksLambda};
 
-  std::vector<Task> tasksOnMaschineInOrder;
   unsigned int time = 0, cmax = 0;
 
   for(auto const& task : tasks)
@@ -38,10 +37,8 @@ int schrageWithDivision(std::vector<Task> & tasks)
       time += readyTasks.top().p;
       cmax = std::max(cmax, readyTasks.top().q + time);
       taskOnMachine = readyTasks.top();
-      tasksOnMaschineInOrder.push_back(taskOnMachine);
       readyTasks.pop();
     }
   }
-  tasks = tasksOnMaschineInOrder;
   return cmax;
 }

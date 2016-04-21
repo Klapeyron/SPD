@@ -1,8 +1,7 @@
 #include "CalierBlocks.hpp"
 
-int CalierBlocks::calculateA(std::vector<Task> & tasks, unsigned int b)
+int CalierBlocks::calculateA(std::vector<Task> const& tasks, unsigned int b, unsigned int cmax)
 {
-  unsigned int cmax = schrage(tasks);
   auto iter = std::min_element(tasks.begin(), tasks.end(), [&tasks,cmax,b](Task const& left, Task const& right)
                                {
                                  auto leftTaskPosition = std::find(tasks.begin(), tasks.end(), left);
@@ -20,9 +19,8 @@ int CalierBlocks::calculateA(std::vector<Task> & tasks, unsigned int b)
   return std::distance(tasks.begin(), iter);
 }
 
-int CalierBlocks::calculateB(std::vector<Task> & tasks)
+int CalierBlocks::calculateB(std::vector<Task> const& tasks, unsigned int cmax)
 {
-  unsigned int cmax = schrage(tasks);
   auto iter = std::max_element(tasks.begin(), tasks.end(), [&tasks,cmax](Task const& left, Task const& right)
                                {
                                  auto leftTaskDistance = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), left));
@@ -33,7 +31,7 @@ int CalierBlocks::calculateB(std::vector<Task> & tasks)
   return std::distance(tasks.begin(), iter);
 }
 
-int CalierBlocks::calculateC(std::vector<Task> & tasks, unsigned int a, unsigned int b)
+int CalierBlocks::calculateC(std::vector<Task> const& tasks, unsigned int a, unsigned int b)
 {
   auto iter = std::max_element(tasks.begin() + a, tasks.begin() + b, [&tasks,a,b](Task const& left, Task const& right)
                                {
