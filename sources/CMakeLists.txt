@@ -4,7 +4,7 @@ add_executable( Calier calier.cpp )
 add_executable( Schrage schrage.cpp )
 add_executable( SchrageWithDivision schrageWithDivision.cpp )
 
-target_link_libraries( Calier SchrageAlgorithm SchrageWithDivisionAlgorithm )
+target_link_libraries( Calier CalierAlgorithm )
 target_link_libraries( Schrage SchrageAlgorithm )
 target_link_libraries( SchrageWithDivision SchrageWithDivisionAlgorithm )
 

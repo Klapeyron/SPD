@@ -25,9 +25,11 @@ int schrage(std::vector<Task> & tasks)
       time = loadedTasks.top().r;
     else
     {
+      auto taskReadyToInsert = readyTasks.top();
+      taskReadyToInsert.insertTimeIntoMachine = time;
+      tasksOnMaschineInOrder.push_back(taskReadyToInsert);
       time += readyTasks.top().p;
       cmax = std::max(cmax, readyTasks.top().q + time);
-      tasksOnMaschineInOrder.push_back(readyTasks.top());
       readyTasks.pop();
     }
   }
