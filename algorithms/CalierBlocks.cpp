@@ -1,44 +1,38 @@
 #include "CalierBlocks.hpp"
+#include <iostream>
 
 int CalierBlocks::calculateA(std::vector<Task> const& tasks, unsigned int b, unsigned int cmax)
 {
-  auto iter = std::min_element(tasks.begin(), tasks.end(), [&tasks,cmax,b](Task const& left, Task const& right)
-                               {
-                                 auto leftTaskPosition = std::find(tasks.begin(), tasks.end(), left);
-                                 auto rightTaskPosition = std::find(tasks.begin(), tasks.end(), right);
-                                 auto leftTaskDistance = std::distance(tasks.begin(), leftTaskPosition);
-                                 auto rightTaskDistance = std::distance(tasks.begin(), rightTaskPosition);
+  for(auto i = 0u; i < b; i++)
+  {
+    int sum = 0;
+    sum = std::accumulate(tasks.begin() + i, tasks.begin() + b + 1, 0, [](int sum, Task const& task)
+                          {
+                            return sum + task.p;
+                          });
 
-                                 auto sum = std::accumulate(leftTaskPosition, tasks.begin() + b, 0,
-                                                            [](int sum, Task const& task)  {
-                                                              return sum + task.p;
-                                                            });
-
-                                 return cmax == left.r + sum + tasks[b].q and leftTaskDistance < rightTaskDistance;
-                               });
-  return std::distance(tasks.begin(), iter);
+    if(cmax == (sum + tasks[i].insertTimeIntoMachine + tasks[b].q))
+      return i;
+  }
+  return 0;
 }
 
 int CalierBlocks::calculateB(std::vector<Task> const& tasks, unsigned int cmax)
 {
-  auto iter = std::max_element(tasks.begin(), tasks.end(), [&tasks,cmax](Task const& left, Task const& right)
-                               {
-                                 auto leftTaskDistance = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), left));
-                                 auto rightTaskDistance = std::distance(tasks.begin(), std::find(tasks.begin(),tasks.end(), right));
-
-                                 return cmax == left.insertTimeIntoMachine + left.q and leftTaskDistance < rightTaskDistance;
-                               });
-  return std::distance(tasks.begin(), iter);
+  int b = 0;
+  for(auto i = 0u; i < tasks.size(); i++)
+  {
+    if(cmax == (tasks[i].insertTimeIntoMachine + tasks[i].q + tasks[i].p ))
+      b = i;
+  }
+  return b;
 }
 
 int CalierBlocks::calculateC(std::vector<Task> const& tasks, unsigned int a, unsigned int b)
 {
-  auto iter = std::max_element(tasks.begin() + a, tasks.begin() + b, [&tasks,a,b](Task const& left, Task const& right)
-                               {
-                                 auto leftTaskDistance = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, left));
-                                 auto rightTaskDistance = std::distance(tasks.begin() + a, std::find(tasks.begin() + a,tasks.begin() + b, right));
-
-                                 return left.q < tasks[b].q and leftTaskDistance < rightTaskDistance;
-                               });
-  return std::distance(tasks.begin(), iter);
+  int c = -1;
+  for(auto i = a; i < b + 1; i++)
+    if(tasks[i].q < tasks[b].q)
+      c = i;
+  return c;
 }
