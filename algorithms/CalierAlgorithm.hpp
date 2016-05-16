@@ -4,4 +4,4 @@
 #include "SchrageAlgorithm.hpp"
 #include "SchrageWithDivisionAlgorithm.hpp"
 
-int calier(std::vector<Task> & tasks);
+int calier(std::vector<Task> tasks);

@@ -31,7 +31,7 @@ int CalierBlocks::calculateB(std::vector<Task> const& tasks, unsigned int cmax)
 int CalierBlocks::calculateC(std::vector<Task> const& tasks, unsigned int a, unsigned int b)
 {
   int c = -1;
-  for(auto i = a; i < b + 1; i++)
+  for(auto i = a; i <= b; i++)
     if(tasks[i].q < tasks[b].q)
       c = i;
   return c;

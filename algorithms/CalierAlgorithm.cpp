@@ -2,7 +2,7 @@
 
 int UB = std::numeric_limits<int>::max();
 
-int calier(std::vector<Task> & tasks)
+int calier(std::vector<Task> tasks)
 {
   int U = schrage(tasks);
   if(U < UB)
@@ -12,10 +12,7 @@ int calier(std::vector<Task> & tasks)
   int a = CalierBlocks::calculateA(tasks, b, UB);
   int c = CalierBlocks::calculateC(tasks, a, b);
 
-  // std::cout << a << std::endl;
-  // std::cout << b << std::endl;
-  // std::cout << c << std::endl;
-  // std::cout << std::endl;
+  std::cout << a << " " << b << " " << c << " " << std::endl << std::endl;
 
   if(c == -1)
     return UB;
