@@ -1,5 +1,4 @@
 #include "CalierBlocks.hpp"
-#include <iostream>
 
 int CalierBlocks::calculateA(std::vector<Task> const& tasks, unsigned int b, unsigned int cmax)
 {

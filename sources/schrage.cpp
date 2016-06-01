@@ -1,4 +1,5 @@
 #include "SchrageAlgorithm.hpp"
+#include <iostream>
 
 int main()
 {

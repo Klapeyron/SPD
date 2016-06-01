@@ -1,14 +1,13 @@
 #include "CalierAlgorithm.hpp"
-#include <fstream>
+#include <iostream>
 
 int main()
 {
   std::vector<Task> loadedTasks;
-  std::ifstream plik ("dane.dat");
-  plik.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   int i = 0;
-  for(Task task; plik >> task.r >> task.p >> task.q;)
+  for(Task task; std::cin >> task.r >> task.p >> task.q;)
   {
     task.id = i;
     loadedTasks.push_back(task);

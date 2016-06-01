@@ -1,4 +1,5 @@
 #include "SchrageWithDivisionAlgorithm.hpp"
+#include <iostream>
 
 int main()
 {
