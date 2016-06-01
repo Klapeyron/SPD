@@ -5,8 +5,7 @@
 
 struct Task
 {
-  int czasWykonania, kara, termin, endTime, id = 0;
-  bool operator < (Task const& task) { return this->id < task.id; }
+  int czasWykonania, kara, termin, endTime = 0;
 };
 
 std::vector<Task> tasks;
@@ -39,12 +38,13 @@ int end(int a)
   
 int main()
 {
-  int s,c,i = 0;
-  for(Task t; std::cin >> t.czasWykonania >> t.kara >> t.termin; t.id=i++)
+  for(Task t; std::cin >> t.czasWykonania >> t.kara >> t.termin;)
     tasks.push_back(t);
 
   std::vector<int> OPT(pow(2, tasks.size()), std::numeric_limits<int>::max());
   OPT[0] = 0;
+
+  int s,c = 0;
   
   for(auto a = 1u; a < pow(2, tasks.size()); a++)
   {
