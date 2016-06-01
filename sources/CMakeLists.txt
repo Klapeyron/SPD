@@ -4,6 +4,7 @@ add_executable( Calier calier.cpp )
 add_executable( Neh neh.cpp )
 add_executable( Schrage schrage.cpp )
 add_executable( SchrageWithDivision schrageWithDivision.cpp )
+add_executable( Witi witi.cpp )
 
 target_link_libraries( Calier CalierAlgorithm )
 target_link_libraries( Schrage SchrageAlgorithm )
@@ -13,3 +14,4 @@ set_target_properties( Calier PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE
 set_target_properties( Neh PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build )
 set_target_properties( Schrage PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build )
 set_target_properties( SchrageWithDivision PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build )
+set_target_properties( Witi PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build )
