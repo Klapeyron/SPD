@@ -41,7 +41,7 @@ int main()
   for(Task t; std::cin >> t.czasWykonania >> t.kara >> t.termin;)
     tasks.push_back(t);
 
-  std::vector<int> OPT(pow(2, tasks.size()), std::numeric_limits<int>::max());
+  std::vector<int> OPT(pow(2, tasks.size()-1), std::numeric_limits<int>::max());
   OPT[0] = 0;
 
   int s,c = 0;
@@ -61,5 +61,5 @@ int main()
       }
     }
   }
-  std::cout << OPT[OPT.size()-1] << std::endl;
+  std::cout << OPT.back() << std::endl;
 }

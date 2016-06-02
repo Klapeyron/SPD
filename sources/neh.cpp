@@ -15,14 +15,11 @@ int neh(std::vector<Task> const& tasks)
 
   for(std::size_t j = 0; j < tasks.size(); j++)
   {
-    // std::cout << "Maszyna " << 0 << ": " << maschine[0] << " + " << tasks[j].timesOnMaschines[0] << " = " << maschine[0] + tasks[j].timesOnMaschines[0] <<std::endl;
     maschine[0] = maschine[0] + tasks[j].timesOnMaschines[0];
     for(std::size_t i = 1; i < tasks[j].timesOnMaschines.size(); i++)
     {
-      // std::cout << "Maszyna " << i << ": " << maschine[i-1] << " + " << tasks[j].timesOnMaschines[i] << " = " << maschine[i-1] + tasks[j].timesOnMaschines[i] <<std::endl;
       maschine[i] = std::max(maschine[i] ,maschine[i-1]) + tasks[j].timesOnMaschines[i];
     }
-    // std::cout << "Koniec taska" << std::endl;
   }
   return maschine.back();
 }

@@ -21,7 +21,7 @@ int calier(std::vector<Task> tasks)
   auto rP = std::min_element(tasks.begin()+c+1, tasks.begin()+b+1, orderByR);
   auto qP = std::min_element(tasks.begin()+c+1, tasks.begin()+b+1, orderByQ);
   auto pP = std::accumulate(tasks.begin()+c+1, tasks.begin()+b+1, 0,
-                            [](int sum, Task const& task)  {
+                            [](int sum, Task const& task) {
                               return sum + task.p;
                             });
   
