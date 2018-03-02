@@ -5,7 +5,7 @@
 
 struct Task
 {
-  int czasWykonania, kara, termin, endTime = 0;
+  int czasWykonania, kara, termin = 0;
 };
 
 std::vector<Task> tasks;
